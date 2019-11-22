@@ -47,6 +47,7 @@
     "rollup-plugin-terser": "^5.1.1",
     "sass": "^1.22.10",
     "svelte": "^3.8.0",
+    "svelte-forms": "^1.0.1",
     "svelte-preprocess": "^2.15.1"
   },
   "keywords": [

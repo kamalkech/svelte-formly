@@ -1,48 +1,54 @@
 <script>
-  import { onMount } from "svelte";
-  import { form } from "svelte-forms";
-  import { valuesForm } from "./stores.js";
-
   import Input from "./Input.svelte";
   import Textarea from "./Textarea.svelte";
   import Select from "./Select.svelte";
   import Radio from "./Radio.svelte";
 
+  import { onMount } from "svelte";
+  import { get } from "svelte/store";
+  import { form } from "svelte-forms";
+  import { valuesForm } from "./stores.js";
+
   export let fields = [];
   let values = [];
-
-  onMount(() => {
-    $valuesForm;
-  });
 
   function changeValueHander(event) {
     values[`${event.detail.name}`] = event.detail.value;
     valuesForm.set(values);
   }
 
-  let fieldsToValidate = {};
-  const myForm = form(() => {
-    if (fields.length > 0) {
-      fields.map(field => {
-        let { validation } = field;
-        const fieldValidate = {
-          [field.name]: {
-            value: values[field.name] ? values[field.name] : "",
-            validators: validation
-          }
-        };
-        fieldsToValidate = { ...fieldsToValidate, ...fieldValidate };
-      });
-    }
-
-    return fieldsToValidate;
+  onMount(() => {
+    $valuesForm;
+    console.log("$valuesForm", $valuesForm);
   });
+
+  let fieldsToValidate = {};
+  if (fields.length > 0) {
+    fields.map(field => {
+      let { validation } = field;
+      const fieldValidate = {
+        [field.name]: {
+          value: values[field.name] ? values[field.name] : "",
+          validators: validation
+        }
+      };
+      fieldsToValidate = fieldValidate;
+    });
+  }
+
+  console.log("fieldsToValidate", fieldsToValidate);
+
+  const myForm = form(() => fieldsToValidate);
 </script>
 
 {#each fields as field (field.id)}
   <div class="form-group">
     {#if field.label}
       <label for={field.id}>{field.label}</label>
+    {/if}
+
+    {#if $myForm.lastname.errors.includes('min')}
+      <p>The name is invalid</p>
     {/if}
 
     {#if field.type == 'text' || field.type == 'password' || field.type == 'email' || field.type == 'number' || field.type == 'tel'}
@@ -58,8 +64,7 @@
         required={field.required}
         disabled={field.disabled}
         value={field.value}
-        on:changeValue={changeValueHander}
-        myform={myForm} />
+        on:changeValue={changeValueHander} />
     {:else if field.type == 'textarea'}
       <Textarea
         label={field.label}

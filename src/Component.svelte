@@ -4,94 +4,20 @@
   import Field from "./Components/Field.svelte";
 
   const fields = [
-    // {
-    //   label: "Your first name",
-    //   type: "text",
-    //   id: "text",
-    //   name: "first-name",
-    //   // value: "sahmoud",
-    //   placeholder: "your first name",
-    //   required: true
-    // },
-    // {
-    //   label: "Your last name",
-    //   type: "text",
-    //   id: "text",
-    //   name: "last-name",
-    //   value: "kamal",
-    //   placeholder: "your last name",
-    //   required: true
-    // },
-    // {
-    //   label: "Ville",
-    //   type: "select",
-    //   id: "ville",
-    //   name: "ville",
-    //   options: [
-    //     {
-    //       title: "Agadir",
-    //       value: 1
-    //     },
-    //     {
-    //       title: "Rabat",
-    //       value: 2
-    //     }
-    //   ]
-    // },
-    // {
-    //   label: "Gender",
-    //   type: "radio",
-    //   id: "gender",
-    //   name: "gender",
-    //   radios: [
-    //     {
-    //       title: "Man",
-    //       value: 1
-    //     },
-    //     {
-    //       title: "Women",
-    //       value: 2
-    //     }
-    //   ]
-    // },
-    // {
-    //   type: "textarea",
-    //   id: "text",
-    //   placeholder: "Tap your last name",
-    //   description: "My description"
-    // }
-
     {
-      label: "First Name",
       type: "text",
-      id: "first_name",
-      name: "first_name",
-      placeholder: "First Name",
-      required: true
+      name: "firstname",
+      value: "",
+      id: "firstname",
+      placeholder: "Tap your first name",
+      validation: ["required", "min:6"]
     },
     {
-      label: "Email",
-      type: "email",
-      id: "email",
-      name: "email",
-      placeholder: "E-mail",
-      required: true
-    },
-    {
-      label: "Telephone",
-      type: "tel",
-      id: "tel",
-      name: "tel",
-      placeholder: "+212600000000",
-      required: true
-    },
-    {
-      label: "Passowrd",
-      type: "password",
-      id: "password",
-      name: "password",
-      placeholder: "Password",
-      required: true
+      type: "text",
+      name: "lastname",
+      value: "",
+      id: "lastname",
+      placeholder: "Tap your lastname"
     }
   ];
 
@@ -104,7 +30,7 @@
     } else {
       console.log("values", values);
     }
-    form.classList.add("was-validated");
+    // form.classList.add("was-validated");
   }
 
   onMount(() => {

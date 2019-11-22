@@ -2,7 +2,6 @@
   import { createEventDispatcher, onMount } from "svelte";
   import clsx from "clsx";
 
-  export let myform;
   export let label;
   export let type = "text";
   export let id = "";
@@ -15,6 +14,8 @@
   export let min = false;
   export let max = false;
   export let readonly = false;
+  export let rows = 4;
+  export let cols = 50;
   const formControlClass = "form-control";
 
   const dispatch = createEventDispatcher();
@@ -34,29 +35,16 @@
   });
 </script>
 
-<input
+<textarea
   {type}
   {id}
   {name}
-  {value}
   class={clsx(classe, formControlClass)}
-  {placeholder}
   {required}
   {disabled}
-  min={min ? min : null}
-  autocomplete={type === 'password' ? 'off' : null}
+  {rows}
+  {cols}
   on:input={onChangerValue} />
 
-<!-- <p>{JSON.stringify($myform[name].valid)}</p> -->
-
-{#if $myform[name].errors.length > 0}
-  <div class="invalid-feedback" style="display:block">
-    {#if $myform[name].errors.includes('required')}
-      {name} is required!
-    {:else if $myform[name].errors.includes('min')}
-      {name} min
-    {:else if $myform[name].errors.includes('max')}{name} max{/if}
-  </div>
-{:else}
-  <div class="valid-feedback">Looks good!</div>
-{/if}
+<div class="valid-feedback">Looks good!</div>
+<div class="invalid-feedback">Please choose a {name}.</div>
