@@ -2,7 +2,6 @@
   import { createEventDispatcher, onMount } from "svelte";
   import clsx from "clsx";
 
-  export let myform;
   export let label;
   export let type = "text";
   export let id = "";
@@ -46,17 +45,3 @@
   min={min ? min : null}
   autocomplete={type === 'password' ? 'off' : null}
   on:input={onChangerValue} />
-
-<!-- <p>{JSON.stringify($myform[name].valid)}</p> -->
-
-{#if $myform[name].errors.length > 0}
-  <div class="invalid-feedback" style="display:block">
-    {#if $myform[name].errors.includes('required')}
-      {name} is required!
-    {:else if $myform[name].errors.includes('min')}
-      {name} min
-    {:else if $myform[name].errors.includes('max')}{name} max{/if}
-  </div>
-{:else}
-  <div class="valid-feedback">Looks good!</div>
-{/if}

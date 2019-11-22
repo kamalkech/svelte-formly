@@ -18,6 +18,14 @@
       value: "",
       id: "lastname",
       placeholder: "Tap your lastname"
+    },
+    {
+      type: "email",
+      name: "email",
+      value: "",
+      id: "email",
+      placeholder: "Tap your email",
+      validation: ["required", "email"]
     }
   ];
 
@@ -25,17 +33,9 @@
 
   function onSubmit(evt) {
     var form = evt.target;
-    if (form.checkValidity() === false) {
-      console.log("Error");
-    } else {
-      console.log("values", values);
-    }
-    // form.classList.add("was-validated");
   }
 
   onMount(() => {
-    // var form = document.getElementsByTagName("form")[0];
-    // form.classList.add("was-validated");
     valuesForm.subscribe(data => {
       values = data;
     });

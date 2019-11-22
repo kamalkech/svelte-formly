@@ -1,5 +1,5 @@
 <script>
-  import { onMount } from "svelte";
+  import { onMount, onDestroy } from "svelte";
   import { form } from "svelte-forms";
   import { valuesForm } from "./stores.js";
 
@@ -37,6 +37,8 @@
 
     return fieldsToValidate;
   });
+
+  onDestroy([valuesForm, myForm]);
 </script>
 
 {#each fields as field (field.id)}
@@ -98,5 +100,25 @@
         {field.description}
       </small>
     {/if}
+
+    <!-- Error messages -->
+    <!-- <p>{JSON.stringify($myform[name].valid)}</p> -->
+    {#if $myForm[field.name].errors.length > 0}
+      <div class="invalid-feedback" style="display:block">
+        <!-- <p>{JSON.stringify(fieldsToValidate[field.name].validators)}</p> -->
+        {#if $myForm[field.name].errors.includes('required')}
+          {field.name} is required!
+        {:else if $myForm[field.name].errors.includes('min')}
+          {field.name} min
+        {:else if $myForm[field.name].errors.includes('max')}
+          {field.name} max
+        {:else if $myForm[field.name].errors.includes('email')}
+          {field.name} is invalid email
+        {/if}
+      </div>
+    {:else}
+      <div class="valid-feedback">Looks good!</div>
+    {/if}
+
   </div>
 {/each}
