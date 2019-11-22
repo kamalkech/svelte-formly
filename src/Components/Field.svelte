@@ -1,8 +1,9 @@
 <script>
   import { onMount, onDestroy } from "svelte";
-  import { form } from "svelte-forms";
+  import { form } from "../Validation/";
   import { valuesForm } from "./stores.js";
 
+  //Import components.
   import Input from "./Input.svelte";
   import Textarea from "./Textarea.svelte";
   import Select from "./Select.svelte";
@@ -15,6 +16,7 @@
     $valuesForm;
   });
 
+  // Change value
   function changeValueHander(event) {
     values[`${event.detail.name}`] = event.detail.value;
     valuesForm.set(values);

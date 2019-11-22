@@ -15,13 +15,12 @@ by [@kamalkech](https://github.com/kamalkech)
 
 ## Installation
 
-npx degit git@github.com:beyonk-adventures/svelte-component-livereload-template.git
+npm i svelte-formly
 
 ## Usage
 
 ```html
 <script>
   import {} from "svelte";
-  s;
 </script>
 ```

@@ -1,9 +1,9 @@
 {
-  "name": "@marocdevelop/svelte-formly",
+  "name": "svelte-formly",
   "svelte": "src/Component.svelte",
   "module": "dist/index.mjs",
   "main": "dist/component.min.js",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Kamal Sahmoud <maroc.develop@gmail.com>",
   "contributors": [
     "Kamal Sahmoud <maroc.develop@gmail.com>"
@@ -47,7 +47,6 @@
     "rollup-plugin-terser": "^5.1.1",
     "sass": "^1.22.10",
     "svelte": "^3.8.0",
-    "svelte-forms": "^1.0.1",
     "svelte-preprocess": "^2.15.1"
   },
   "keywords": [
