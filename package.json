@@ -1,13 +1,17 @@
 {
-  "name": "svelte-formly",
+  "name": "@arabdevelop/svelte-formly",
   "svelte": "src/Component.svelte",
   "module": "dist/index.mjs",
   "main": "dist/component.min.js",
-  "version": "0.0.3",
+  "version": "0.0.0",
   "author": "Kamal Sahmoud <maroc.develop@gmail.com>",
   "contributors": [
     "Kamal Sahmoud <maroc.develop@gmail.com>"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chainlist/svelte-forms"
+  }
   "scripts": {
     "preinstall": "[ -z \"$NPM_TOKEN\" ] && echo 'local' || echo \"//registry.npmjs.org/:_authToken=${NPM_TOKEN}\" > .npmrc",
     "build": "rollup -c",
