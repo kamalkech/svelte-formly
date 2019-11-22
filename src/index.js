@@ -9,7 +9,8 @@
 // })
 
 import Field from "./Components/Field.svelte";
+import { valuesForm } from "./Components/stores";
 import { form, bindClass } from "./Validation";
 
-export { Field, form, bindClass };
-export const kamalsveltetest = { Field, form, bindClass };
+export { Field, valuesForm, form, bindClass };
+export const formly = { Field, valuesForm, form, bindClass };
